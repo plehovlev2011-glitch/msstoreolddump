@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>У Вас возникают проблемы с установкой приложений из Магазина?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 20px;
+            color: #666;
+            padding: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #888;
+            cursor: pointer;
+        }
+
+        a:hover, a:active, a:focus {
+            color: #9B4F96 !important;
+        }
+
+        .content {
+            width: 896px;
+            margin: 0 auto;
+        }
+
+        /* логотип */
+        #wplogo {
+            display: block;
+            float: left;
+            width: 175px;
+            height: 25px;
+            background-image: url('logo.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-bottom: 20px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        /* основное окно */
+        .help-window {
+            background: #fff;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        /* заголовок */
+        .help-title {
+            font-family: 'Segoe UI Light', Helvetica, Arial, sans-serif;
+            font-size: 36px;
+            line-height: 48px;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* секции */
+        .help-section {
+            margin-bottom: 30px;
+        }
+
+        .help-section h3 {
+            font-family: 'Segoe UI Semibold', Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .help-section p {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .help-list {
+            margin: 15px 0 15px 25px;
+        }
+
+        .help-list li {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .help-note {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 3px solid #9B4F96;
+        }
+
+        .help-note p {
+            margin: 0;
+            color: #333;
+        }
+
+        /* кнопки */
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0 20px;
+        }
+
+        .btn {
+            border: none;
+            background: #9B4F96;
+            color: #fff;
+            font-family: 'Segoe UI Semibold', Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+            padding: 8px 30px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            border: 2px solid #333;
+            color: #333;
+            padding: 6px 28px;
+        }
+
+        .btn-secondary:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        .footer-note {
+            font-size: 11px;
+            color: #999;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <!-- логотип -->
+    <a href="#" id="wplogo" onclick="window.location.href='index.html'"></a>
+    <div class="clear"></div>
+
+    <div class="help-window">
+        <h1 class="help-title">у Вас возникают проблемы с установкой приложений из Магазина?</h1>
+
+        <div class="help-section">
+            <h3>проблемы с установкой приложений</h3>
+            <p>если приложение не устанавливается или работает некорректно, следуйте инструкциям ниже.</p>
+        </div>
+
+        <div class="help-section">
+            <h3>1. проверьте подключение к интернету</h3>
+            <p>убедитесь, что компьютер подключён к сети. откройте любой сайт в браузере, чтобы проверить соединение.</p>
+        </div>
+
+        <div class="help-section">
+            <h3>2. освободите место на диске</h3>
+            <p>для установки приложений требуется свободное место на системном разделе. может, нужно удалить временные файлы или переместить личные данные на другой диск?</p>
+        </div>
+
+        <div class="help-section">
+            <h3>3. запустите средство устранения неисправностей</h3>
+            <p>перейдите в  «Пуск» → «Параметры» → «Устранение неполадок» → «Приложения из Магазина» → «Запустить средство устранения неполадок».</p>
+        </div>
+
+        <div class="help-section">
+            <h3>4. очистите кэш Магазина</h3>
+            <p>скопируйте команду <code>wsreset.exe</code> в окно «Выполнить» (Win + R) и нажмите Enter. это очистит временные файлы Магазина и приложения "Сегодня в Windows" в принципе без удаления установленных приложений.</p>
+        </div>
+
+        <div class="help-section">
+            <h3>5. проверьте время и дату</h3>
+            <p>неправильные настройки времени и даты могут мешать работе Магазина. нажмите на часы в правом нижнем углу, выберите «Изменение параметров даты и времени» и включите «Установить время автоматически».</p>
+        </div>
+
+        <div class="help-section">
+            <h3>6. обновите систему</h3>
+            <p>перейдите в «Пуск» → «Параметры» → «Центр обновлений Windows» и установите все доступные обновления.</p>
+        </div>
+
+        <div class="help-note">
+            <p><strong>примечание:</strong> если ни один из способов не помог, обратитесь в службу поддержки Microsoft.</p>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-secondary" onclick="window.location.href='index.html'">назад к покупкам</button>
+        </div>
+
+        <div class="footer-note">
+            .
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
