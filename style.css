@@ -1,0 +1,886 @@
+/* ============================================
+   Windows Phone Store (2013) - Complete Styles
+   Color theme: #9B4F96 (purple)
+   ============================================ */
+
+/* RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #666;
+    padding-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #888;
+    cursor: pointer;
+}
+
+a:hover, a:active, a:focus {
+    color: #9B4F96 !important;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+.clear {
+    clear: both;
+}
+
+.hr {
+    border-bottom: 1px solid #dedede;
+    height: 0;
+    overflow: hidden;
+}
+
+/* TYPOGRAPHY */
+.title1 {
+    font-family: 'Segoe UI Light', Helvetica, Arial, sans-serif;
+    font-size: 36px;
+    line-height: 48px;
+    color: #333;
+    font-weight: normal;
+}
+
+.title5, h5 {
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    font-weight: normal;
+}
+
+.smallText {
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #666;
+}
+
+/* LAYOUT */
+.content {
+    width: 896px;
+    margin: 0 auto;
+}
+
+#main {
+    overflow: hidden;
+    clear: both;
+    min-height: 505px;
+    margin-top: 23px;
+}
+
+/* HEADER */
+#header {
+    position: relative;
+    z-index: 150;
+}
+
+#wplogo {
+    display: block;
+    float: left;
+    width: 175px;
+    height: 25px;
+    background-image: url('../images/logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 10px;
+}
+
+/* SEARCH */
+#search {
+    float: right;
+    width: 250px;
+    background-color: #f4f4f4;
+    text-align: right;
+}
+
+#searchInput {
+    width: 220px;
+    padding: 4px;
+    border: none;
+    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: #666;
+}
+
+#searchInput.placeholder {
+    font-style: italic;
+    color: #999;
+}
+
+#searchButton {
+    margin-bottom: -3px;
+    vertical-align: middle;
+}
+
+/* MAIN NAVIGATION */
+ul.mainNav {
+    float: left;
+    width: 630px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 24px;
+    overflow: hidden;
+}
+
+ul.mainNav > li {
+    float: left;
+    margin-right: 20px;
+}
+
+.mainNav {
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000;
+}
+
+body.marketplace .mainNav a.marketplace {
+    color: #9B4F96 !important;
+}
+
+/* SUB NAVIGATION */
+ul.subNav {
+    margin: 6px 0 2px 0;
+    clear: both;
+}
+
+ul.subNav > li {
+    float: left;
+    margin-right: 14px;
+}
+
+.subNav {
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+}
+
+body.landingPage #store_landing {
+    color: #9B4F96 !important;
+}
+
+/* USER AREA */
+#userArea {
+    position: absolute;
+    right: 21px;
+    top: 39px;
+}
+
+#userArea .dropmenu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 223px;
+    z-index: 100;
+}
+
+#userArea .dropmenu > li {
+    width: 100%;
+}
+
+#userArea .dropmenu > li a {
+    color: #888 !important;
+}
+
+.dropImage {
+    float: left;
+    margin-left: 5px;
+    width: 9px;
+    height: 16px;
+    background-image: url('../images/sprite.png');
+    background-position: -272px -51px;
+    background-repeat: no-repeat;
+}
+
+#explore {
+    margin-bottom: 10px;
+}
+
+#explore img.phone {
+    width: 28px;
+    height: 50px;
+    float: right;
+}
+
+#explore a {
+    display: block;
+    overflow: hidden;
+    cursor: default;
+}
+
+#explore em, #explore > a > div {
+    float: left;
+    width: 175px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* SPOTLIGHT SECTION */
+#spotlight {
+    margin-bottom: 20px;
+}
+
+body.landingPage .spotRow {
+    margin-bottom: 10px;
+    width: 896px;
+    overflow: hidden;
+    height: 141px;
+}
+
+body.landingPage .spotRow.row0 {
+    height: 292px !important;
+}
+
+body.landingPage .spotRow.row3 {
+    margin-bottom: 0;
+}
+
+body.landingPage .spotRow div.appImage,
+body.landingPage .spotRow div.collectionTile {
+    float: left;
+    margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+body.landingPage .spotRow > div:first-child {
+    margin-left: 0 !important;
+}
+
+/* APP IMAGES & CONTAINERS */
+.appImage {
+    background-color: #eee;
+}
+
+.appImage.xxlarge {
+    width: 292px;
+    height: 292px;
+}
+
+.appImage.large {
+    width: 141px;
+    height: 141px;
+}
+
+.appImage.xxlarge img,
+.appImage.large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.appContainer {
+    position: relative;
+}
+
+.appInfo.xxlarge {
+    position: absolute;
+    top: 292px;
+    left: 0;
+    width: 292px;
+    height: 292px;
+}
+
+.appInfo.large {
+    position: absolute;
+    top: 141px;
+    left: 0;
+    width: 141px;
+    height: 141px;
+}
+
+.appInfo.xxlarge .appTitle {
+    margin: 16px;
+    font-family: 'Segoe UI Bold', Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    line-height: 39px;
+    font-weight: bolder;
+    color: #fff;
+    overflow: hidden;
+    max-height: 80px;
+    cursor: pointer;
+}
+
+.appInfo.large .appTitle {
+    margin: 8px 10px;
+    font-family: 'Segoe UI Bold', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 29px;
+    font-weight: bolder;
+    color: #fff;
+    overflow: hidden;
+    max-height: 60px;
+    cursor: pointer;
+}
+
+.appInfo.xxlarge .ratingLandingXXLarge,
+.appInfo.large .ratingLandingLarge {
+    cursor: pointer;
+}
+
+.appInfo.xxlarge .ratingLandingXXLarge {
+    float: left;
+    margin-left: 16px;
+    margin-right: 8px;
+}
+
+.appInfo.large .ratingLandingLarge {
+    margin-left: 10px;
+}
+
+.appInfo.xxlarge .reviews,
+.appInfo.large .reviews {
+    color: #fff;
+    cursor: pointer;
+}
+
+.appInfo.large .reviews {
+    opacity: 0.6;
+    margin-left: 10px;
+}
+
+.appInfo.xxlarge .appPrice {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.appInfo.large .appPrice {
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* RATING SPRITES */
+.ratingLandingXXLarge,
+.ratingLandingLarge {
+    background-image: url('../images/sprite.png');
+    background-repeat: no-repeat;
+}
+
+.ratingLandingXXLarge {
+    height: 19px;
+    width: 108px;
+}
+
+.ratingLandingLarge {
+    height: 13px;
+    width: 81px;
+}
+
+.ratingLandingXXLarge.zeroPtZero { background-position: -294px -229px; }
+.ratingLandingXXLarge.zeroPtFive { background-position: -294px -187px; }
+.ratingLandingXXLarge.onePtZero { background-position: -272px -229px; }
+.ratingLandingXXLarge.onePtFive { background-position: -272px -187px; }
+.ratingLandingXXLarge.twoPtZero { background-position: -250px -229px; }
+.ratingLandingXXLarge.twoPtFive { background-position: -250px -187px; }
+.ratingLandingXXLarge.threePtZero { background-position: -228px -229px; }
+.ratingLandingXXLarge.threePtFive { background-position: -228px -187px; }
+.ratingLandingXXLarge.fourPtZero { background-position: -206px -229px; }
+.ratingLandingXXLarge.fourPtFive { background-position: -206px -187px; }
+.ratingLandingXXLarge.fivePtZero { background-position: -184px -229px; }
+
+.ratingLandingLarge.zeroPtZero { background-position: -268px -253px; }
+.ratingLandingLarge.zeroPtFive { background-position: -268px -211px; }
+.ratingLandingLarge.onePtZero { background-position: -252px -253px; }
+.ratingLandingLarge.onePtFive { background-position: -252px -211px; }
+.ratingLandingLarge.twoPtZero { background-position: -235px -253px; }
+.ratingLandingLarge.twoPtFive { background-position: -235px -211px; }
+.ratingLandingLarge.threePtZero { background-position: -218px -253px; }
+.ratingLandingLarge.threePtFive { background-position: -218px -211px; }
+.ratingLandingLarge.fourPtZero { background-position: -201px -253px; }
+.ratingLandingLarge.fourPtFive { background-position: -201px -211px; }
+.ratingLandingLarge.fivePtZero { background-position: -184px -253px; }
+
+/* COLLECTION TILES */
+.collectionTile {
+    width: 292px;
+}
+
+.collectionTile .tile {
+    background-color: #eee;
+    position: relative;
+    width: 292px;
+    height: 141px;
+}
+
+.collectionTile .tile img {
+    width: 292px;
+    height: 141px;
+    object-fit: cover;
+}
+
+.collectionTile .tile h5 {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    max-width: 230px;
+    max-height: 96px;
+    overflow: hidden;
+}
+
+.collectionsText {
+    font-family: 'Segoe UI Bold', Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: bolder;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.collectionContainer > .collectionInfo {
+    position: absolute;
+    top: 141px;
+    width: 292px;
+    height: 141px;
+    background-color: #9B4F96 !important;
+}
+
+.collectionContainer > .collectionInfo .collectionTitle {
+    font-family: 'Segoe UI Bold', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin: 8px 10px;
+    color: #fff;
+}
+
+.collectionContainer > .collectionInfo .collectionDescription {
+    margin-left: 10px;
+    max-height: 80px;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* LISTS (Tables) */
+body.landingPage div.list {
+    margin-top: 56px;
+    overflow: hidden;
+}
+
+body.landingPage div.list > .listHeader {
+    width: 100%;
+    float: left;
+}
+
+body.landingPage div.list > .listHeader h6 {
+    float: left;
+    margin-bottom: 15px;
+    white-space: nowrap;
+}
+
+body.landingPage div.list > .listHeader div.links {
+    float: right;
+    margin: 23px 0 20px 0;
+    white-space: nowrap;
+}
+
+body.landingPage div.links > a {
+    color: #000;
+}
+
+.separator {
+    color: #999;
+    margin: 0 14px;
+}
+
+table.appList {
+    width: 100%;
+    table-layout: fixed;
+}
+
+table.appList td {
+    position: relative;
+    vertical-align: top;
+    padding-bottom: 32px;
+}
+
+table.appList td.medium {
+    width: 154px;
+}
+
+table.appList td.medium * {
+    width: 126px;
+}
+
+table.appList td .title {
+    color: #000;
+    margin-top: 10px;
+    max-height: 41px;
+    overflow: hidden;
+    display: block;
+}
+
+table.appList td .cost {
+    color: #999;
+    margin-top: 4px;
+    height: 21px;
+}
+
+.appImage.medium {
+    width: 126px;
+    height: 126px;
+    background-color: #eee;
+    display: inline-block;
+}
+
+.appImage.medium img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* COLLECTIONS LIST */
+table.collectionList {
+    width: 100%;
+}
+
+table.collectionList td {
+    width: 280px;
+    vertical-align: top;
+}
+
+/* PROMO MODULES */
+#promoModules {
+    width: 100%;
+    float: left;
+    margin: 26px 0 54px;
+}
+
+#promoModules ul {
+    width: 896px;
+    margin: 0 auto;
+}
+
+#promoModules li {
+    float: left;
+    margin-left: 28px;
+    width: 203px;
+}
+
+#promoModules li:first-child {
+    margin-left: 0;
+}
+
+#promoModules li .promoImg {
+    width: 203px;
+    height: 203px;
+    background-color: #fff;
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+
+#promoModules li .promoImg img {
+    width: 203px;
+    height: 203px;
+    object-fit: cover;
+}
+
+#promoModules li p {
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+#promoModules li a.inline {
+    margin-top: 5px;
+    display: inline-block;
+    text-decoration: underline;
+}
+
+/* FOOTER */
+#footer {
+    margin-top: 25px;
+    background-color: #f1f1f1;
+    clear: both;
+    min-width: 896px;
+}
+
+#footer #disclaimer {
+    margin-bottom: 26px;
+    padding-top: 30px;
+}
+
+#footer .navContainer {
+    clear: both;
+    min-width: 896px;
+}
+
+#footerNav {
+    float: left;
+    width: 100%;
+    margin: 30px 0 0;
+}
+
+#footerNav li {
+    float: left;
+    height: 20px;
+}
+
+#footerNav li a {
+    color: #888;
+    font-size: 14px;
+}
+
+#footerNav li a:hover {
+    color: #000 !important;
+}
+
+#footerNav .separator {
+    margin: 0 9px;
+}
+
+#footerSubNav {
+    clear: left;
+    float: left;
+    margin-top: 6px;
+    margin-bottom: 30px;
+    width: 620px;
+}
+
+#footerSubNav li {
+    float: left;
+    height: 16px;
+}
+
+#footerSubNav li a {
+    color: #888;
+    font-size: 12px;
+}
+
+#copyright {
+    float: right;
+}
+
+#copyright span {
+    float: right;
+    margin-top: 6px;
+    margin-right: 15px;
+    font-size: 12px;
+    color: #888;
+}
+
+#mslogo {
+    float: right;
+}
+
+#mslogo img {
+    width: auto;
+    height: auto;
+}
+
+/* BUTTONS & LINKS */
+a.inline {
+    text-decoration: underline;
+}
+
+.button1, .button2, .button3, .button4, .button5, .button6 {
+    cursor: pointer;
+}
+
+/* ============================================
+   ANIMATIONS & BEHAVIORS
+   ============================================ */
+
+/* Hover effects for app tiles */
+.appContainer {
+    transition: transform 0.2s ease;
+}
+
+.appContainer:hover {
+    transform: scale(1.02);
+}
+
+.appInfo {
+    transition: opacity 0.3s ease;
+}
+
+.appContainer:hover .appInfo {
+    opacity: 0.95;
+}
+
+/* Dropdown menu animation */
+#userArea .dropmenu {
+    transition: all 0.3s ease;
+}
+
+#userArea .dropmenu.visible {
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Search input focus effect */
+#searchInput:focus {
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px #9B4F96;
+}
+
+/* Link hover underlines */
+.mainNav a:hover, .subNav a:hover, .footer1:hover, .footer2:hover {
+    text-decoration: underline;
+}
+
+/* Promo module hover */
+.promoImg {
+    transition: opacity 0.2s ease;
+}
+
+.promoImg:hover {
+    opacity: 0.85;
+}
+
+/* Responsive behavior */
+@media (max-width: 896px) {
+    .content, #promoModules ul {
+        width: 100%;
+        padding: 0 15px;
+    }
+    
+    .spotRow {
+        flex-wrap: wrap;
+        height: auto !important;
+    }
+}
+/* ============================================
+   FULL SLIDE UP ANIMATION FOR APP TILES
+   ============================================ */
+
+/* Контейнер плитки — включаем overflow hidden для анимации */
+.appContainer {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+/* Инфо-панель — изначально скрыта внизу */
+.appInfo {
+    position: absolute;
+    bottom: -200px;  /* Скрыта за нижним краем */
+    left: 0;
+    width: 100%;
+    background-color: #9B4F96;  /* Однотонный фиолетовый фон */
+    transition: bottom 0.25s ease-out;
+    z-index: 10;
+}
+
+/* Размеры для разных типов плиток */
+.appInfo.xxlarge {
+    height: 292px;
+}
+
+.appInfo.large {
+    height: 141px;
+}
+
+/* При наведении на контейнер — панель выезжает */
+.appContainer:hover .appInfo {
+    bottom: 0;
+}
+
+/* При наведении на саму панель — тоже держим открытой */
+.appInfo:hover {
+    bottom: 0;
+}
+
+/* Контент внутри панели */
+.appInfoContainer {
+    padding: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.appInfo.large .appInfoContainer {
+    padding: 10px;
+}
+
+/* Заголовок приложения */
+.appTitle {
+    color: #fff;
+    font-weight: bold;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.appInfo.xxlarge .appTitle {
+    font-size: 28px;
+    line-height: 32px;
+    max-height: 96px;
+}
+
+.appInfo.large .appTitle {
+    font-size: 18px;
+    line-height: 22px;
+    max-height: 66px;
+}
+
+/* Рейтинг и отзывы */
+.ratingLandingLarge, 
+.ratingLandingXXLarge {
+    margin: 8px 0 4px 0;
+}
+
+.reviews {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+}
+
+.appPrice {
+    color: #fff;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+/* Анимация для самой картинки — небольшое затемнение */
+.appImage {
+    transition: opacity 0.2s ease;
+}
+
+.appContainer:hover .appImage {
+    opacity: 0.95;
+}
+
+/* Для коллекций — аналогично */
+.collectionContainer {
+    position: relative;
+    overflow: hidden;
+}
+
+.collectionContainer > .collectionInfo {
+    position: absolute;
+    bottom: -200px;
+    left: 0;
+    width: 100%;
+    background-color: #9B4F96;
+    transition: bottom 0.25s ease-out;
+}
+
+.collectionContainer:hover > .collectionInfo {
+    bottom: 0;
+}
