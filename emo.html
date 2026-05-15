@@ -5,53 +5,75 @@
     <title>Скачать изображение</title>
 </head>
 <body>
-    <button id="downloadBtn" style="width: 100%; height: 100vh; font-size: 10vw;">СКАЧАТЬ 1.PNG</button>
+    <button id="downloadBtn" style="width: 100%; height: 100vh; font-size: 10vw;">СКАЧыАТЬ 1.PNG</button>
 
     <script>
-        // Проверяем, запущено ли приложение в Electron/Nativefier
-        const isElectron = navigator.userAgent.toLowerCase().indexOf(' electron/') > -1;
-        
-        const downloadBtn = document.getElementById('downloadBtn');
-        
-        downloadBtn.addEventListener('click', async () => {
-            const filename = '1.png';
-            const url = '1.png';
-            
-            if (isElectron) {
-                // Electron/Nativefier: показываем кастомный диалог
-                try {
-                    const { dialog } = require('electron').remote;
+        (function() {
+            // Ждём полной загрузки Electron
+            const init = () => {
+                const downloadBtn = document.getElementById('downloadBtn');
+                if (!downloadBtn) return;
+                
+                downloadBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
                     
-                    const result = await dialog.showSaveDialog({
-                        title: 'Сохраните приобретённое приложение',
-                        defaultPath: filename,
-                        buttonLabel: 'Сохранить'
-                    });
+                    const filename = '1.png';
+                    const url = '1.png';
                     
-                    if (!result.canceled && result.filePath) {
-                        const win = require('electron').remote.getCurrentWindow();
-                        win.webContents.downloadURL(url);
-                        
-                        win.webContents.session.once('will-download', (event, item) => {
-                            item.setSavePath(result.filePath);
-                        });
+                    // Способ 1: Electron API
+                    if (typeof require !== 'undefined') {
+                        try {
+                            const electron = require('electron');
+                            const { dialog, ipcRenderer } = electron;
+                            const win = electron.remote.getCurrentWindow();
+                            
+                            // Показываем кастомный диалог
+                            const result = await dialog.showSaveDialog(win, {
+                                title: 'Сохраните приобретённое приложение',
+                                defaultPath: filename,
+                                buttonLabel: 'Сохранить'
+                            });
+                            
+                            if (!result.canceled && result.filePath) {
+                                // Скачиваем и сохраняем
+                                win.webContents.downloadURL(url);
+                                
+                                win.webContents.session.once('will-download', (event, item) => {
+                                    item.setSavePath(result.filePath);
+                                    
+                                    item.once('done', (event, state) => {
+                                        if (state === 'completed') {
+                                            dialog.showMessageBox(win, {
+                                                title: 'Готово',
+                                                message: 'Файл успешно сохранён!',
+                                                buttons: ['OK']
+                                            });
+                                        }
+                                    });
+                                });
+                            }
+                            return;
+                        } catch(err) {
+                            console.log('Electron API error:', err);
+                        }
                     }
-                } catch (err) {
-                    console.error('Ошибка:', err);
-                    // Запасной вариант: обычная ссылка
+                    
+                    // Способ 2: Обычный download атрибут (запасной)
                     const link = document.createElement('a');
                     link.href = url;
                     link.download = filename;
+                    document.body.appendChild(link);
                     link.click();
-                }
+                    document.body.removeChild(link);
+                });
+            };
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
             } else {
-                // Обычный браузер: используем стандартный download
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = filename;
-                link.click();
+                init();
             }
-        });
+        })();
     </script>
 </body>
 </html>
