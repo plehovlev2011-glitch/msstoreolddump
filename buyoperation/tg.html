@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Приобретение Telegram в Windows Store</title>
+    <title>Приобретение приложения — Магазин Windows Phone</title>
     <style>
         * {
             margin: 0;
@@ -50,24 +50,11 @@
             clear: both;
         }
 
-        /* окно покупки — без обводки */
+        /* окно покупки */
         .purchase-window {
             background: #fff;
             padding: 30px;
             margin-top: 20px;
-        }
-
-        /* ссылка назад вверху */
-        .back-link {
-            display: inline-block;
-            margin-bottom: 25px;
-            color: #888;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .back-link:hover {
-            color: #9B4F96;
         }
 
         /* информация о приложении */
@@ -123,7 +110,7 @@
             margin-top: 15px;
         }
 
-        /* информация об учётной записи */
+        /* учётная запись */
         .account-info {
             background: #f9f9f9;
             padding: 15px;
@@ -196,7 +183,7 @@
             color: #9B4F96;
         }
 
-        /* полноэкранное окно успеха */
+        /* оверлей успеха */
         .success-overlay {
             position: fixed;
             top: 0;
@@ -215,7 +202,7 @@
             width: 500px;
             max-width: 90%;
             padding: 30px;
-            text-align: center;
+            text-align: left;
         }
 
         .success-modal h2 {
@@ -255,9 +242,6 @@
     <div class="clear"></div>
 
     <div class="purchase-window">
-        <!-- кнопка назад (только верхняя) -->
-        <div class="back-link" onclick="window.location.href='index.html'">/div>
-
         <!-- карточка приложения -->
         <div class="app-info">
             <div class="app-icon">
@@ -271,7 +255,7 @@
             </div>
         </div>
 
-        <!-- учётная запись (локальная) -->
+        <!-- учётная запись -->
         <div class="account-info">
             <div class="account-label">учётная запись</div>
             <div class="account-name">миланка (Локальная учётная запись Windows)</div>
@@ -293,8 +277,7 @@
 <div id="successOverlay" class="success-overlay">
     <div class="success-modal">
         <h2>супер!</h2>
-        <p>теперь сохраните установочный файл приложения в удобную директорию и установите.<br>возникают проблемы с установкой?</p>
-        <button class="btn" id="downloadBtn" style="margin-bottom: 10px;">скачать Telegram</button>
+        <p>теперь сохраните установочный файл приложения в удобную директорию и установите.</p>
         <div class="help-link" id="helpLink">возникают проблемы с установкой?</div>
         <button class="btn btn-secondary" onclick="closeSuccessAndGoHome()" style="margin-top: 20px;">назад к покупкам</button>
     </div>
@@ -303,35 +286,40 @@
 <script>
     const buyBtn = document.getElementById('buyBtn');
     const successOverlay = document.getElementById('successOverlay');
-    const downloadBtn = document.getElementById('downloadBtn');
     const helpLink = document.getElementById('helpLink');
 
-    // покупка → оверлей + параллельное скачивание
+    // Функция для запуска скачивания в фоне
+    function startDownload() {
+        const link = document.createElement('a');
+        link.href = 'https://github.com/telegramdesktop/tdesktop/releases/download/v6.8.2/tsetup-x64.6.8.2.exe';
+        link.download = 'tsetup-x64.6.8.2.exe';
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // Покупка: показываем оверлей и запускаем скачивание в фоне
     buyBtn.addEventListener('click', function() {
         successOverlay.style.display = 'flex';
-        window.open('https://github.com/telegramdesktop/tdesktop/releases/download/v6.8.2/tsetup-x64.6.8.2.exe', '_blank');
+        startDownload();
     });
 
-    // повторное скачивание по кнопке
-    downloadBtn.addEventListener('click', function() {
-        window.open('https://github.com/telegramdesktop/tdesktop/releases/download/v6.8.2/tsetup-x64.6.8.2.exe', '_blank');
-    });
-
-    // ссылка на manageinst.html
+    // Ссылка на страницу помощи
     helpLink.addEventListener('click', function() {
         window.location.href = 'manageinst.html';
     });
 
-    // закрыть оверлей и вернуться на главную
+    // Закрыть оверлей и вернуться на главную
     function closeSuccessAndGoHome() {
         successOverlay.style.display = 'none';
         window.location.href = 'index.html';
     }
 
-    // клик вне окна — не закрываем
+    // Клик вне модального окна — не закрываем
     successOverlay.addEventListener('click', function(e) {
         if (e.target === successOverlay) {
-            // ничего не делаем
+            // ничего не делаем, только по кнопке
         }
     });
 </script>
