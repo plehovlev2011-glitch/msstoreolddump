@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Приобретение приложения — Магазин Windows Phone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 20px;
+            color: #666;
+            padding: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #888;
+            cursor: pointer;
+        }
+
+        a:hover, a:active, a:focus {
+            color: #9B4F96 !important;
+        }
+
+        .content {
+            width: 896px;
+            margin: 0 auto;
+        }
+
+        /* логотип */
+        #wplogo {
+            display: block;
+            float: left;
+            width: 175px;
+            height: 25px;
+            background-image: url('logo.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-bottom: 20px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        /* окно покупки — без обводки */
+        .purchase-window {
+            background: #fff;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        /* ссылка назад вверху */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: #888;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            color: #9B4F96;
+        }
+
+        /* информация о приложении */
+        .app-info {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .app-icon {
+            width: 126px;
+            height: 126px;
+            background: #eee;
+            flex-shrink: 0;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .app-details {
+            flex: 1;
+        }
+
+        .app-title {
+            font-family: 'Segoe UI Light', Helvetica, Arial, sans-serif;
+            font-size: 32px;
+            line-height: 40px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .app-developer {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .app-size {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .app-price {
+            font-size: 28px;
+            font-family: 'Segoe UI Light', Helvetica, Arial, sans-serif;
+            color: #9B4F96;
+            margin-top: 15px;
+        }
+
+        /* информация об учётной записи */
+        .account-info {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .account-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .account-name {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* кнопки */
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0 20px;
+        }
+
+        .btn {
+            border: none;
+            background: #9B4F96;
+            color: #fff;
+            font-family: 'Segoe UI Semibold', Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+            padding: 8px 30px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            border: 2px solid #333;
+            color: #333;
+            padding: 6px 28px;
+        }
+
+        .btn-secondary:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        /* условия */
+        .terms {
+            font-size: 11px;
+            color: #999;
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+
+        .terms a {
+            color: #999;
+            text-decoration: underline;
+        }
+
+        .terms a:hover {
+            color: #9B4F96;
+        }
+
+        /* полноэкранное окно успеха */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-modal {
+            background: #fff;
+            width: 500px;
+            max-width: 90%;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .success-modal h2 {
+            font-family: 'Segoe UI Light', Helvetica, Arial, sans-serif;
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .success-modal p {
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .success-modal .btn {
+            margin-top: 10px;
+        }
+
+        .help-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #9B4F96;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .help-link:hover {
+            color: #6a2e66;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <!-- логотип windows -->
+    <a href="#" id="wplogo" onclick="window.location.href='index.html'"></a>
+    <div class="clear"></div>
+
+    <div class="purchase-window">
+        <!-- кнопка назад (только верхняя) -->
+        <div class="back-link" onclick="window.location.href='index.html'">/div>
+
+        <!-- карточка приложения -->
+        <div class="app-info">
+            <div class="app-icon">
+                <img src="1.png" alt="Telegram for Windows">
+            </div>
+            <div class="app-details">
+                <div class="app-title">Telegram for Windows</div>
+                <div class="app-developer">Telegram</div>
+                <div class="app-size">50 МБ</div>
+                <div class="app-price">0 €</div>
+            </div>
+        </div>
+
+        <!-- учётная запись (локальная) -->
+        <div class="account-info">
+            <div class="account-label">учётная запись</div>
+            <div class="account-name">Миланка (Локальная учётная запись Windows)</div>
+        </div>
+
+        <!-- кнопки -->
+        <div class="actions">
+            <button class="btn" id="buyBtn">купить</button>
+            <button class="btn btn-secondary" onclick="window.location.href='index.html'">назад</button>
+        </div>
+
+        <div class="terms">
+            приобретая товар, вы соглашаетесь с <a href="#">условиями использования Windows Store</a>
+        </div>
+    </div>
+</div>
+
+<!-- оверлей после покупки -->
+<div id="successOverlay" class="success-overlay">
+    <div class="success-modal">
+        <h2>супер!</h2>
+        <p>теперь сохраните установочный файл приложения в удобную директорию и установите.<br>возникают проблемы с установкой?</p>
+        <button class="btn" id="downloadBtn" style="margin-bottom: 10px;">скачать Telegram</button>
+        <div class="help-link" id="helpLink">возникают проблемы с установкой?</div>
+        <button class="btn btn-secondary" onclick="closeSuccessAndGoHome()" style="margin-top: 20px;">назад к покупкам</button>
+    </div>
+</div>
+
+<script>
+    const buyBtn = document.getElementById('buyBtn');
+    const successOverlay = document.getElementById('successOverlay');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const helpLink = document.getElementById('helpLink');
+
+    // покупка → оверлей + параллельное скачивание
+    buyBtn.addEventListener('click', function() {
+        successOverlay.style.display = 'flex';
+        window.open('https://github.com/telegramdesktop/tdesktop/releases/download/v6.8.2/tsetup-x64.6.8.2.exe', '_blank');
+    });
+
+    // повторное скачивание по кнопке
+    downloadBtn.addEventListener('click', function() {
+        window.open('https://github.com/telegramdesktop/tdesktop/releases/download/v6.8.2/tsetup-x64.6.8.2.exe', '_blank');
+    });
+
+    // ссылка на manageinst.html
+    helpLink.addEventListener('click', function() {
+        window.location.href = 'manageinst.html';
+    });
+
+    // закрыть оверлей и вернуться на главную
+    function closeSuccessAndGoHome() {
+        successOverlay.style.display = 'none';
+        window.location.href = 'index.html';
+    }
+
+    // клик вне окна — не закрываем
+    successOverlay.addEventListener('click', function(e) {
+        if (e.target === successOverlay) {
+            // ничего не делаем
+        }
+    });
+</script>
+
+</body>
+</html>
