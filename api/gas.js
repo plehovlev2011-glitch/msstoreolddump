@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbyOVZd4efcpiAaklbpx3__zwidiN-TS0oNqkrqY6oALSh8Wz33tmtJGnZwwIc-7_xjTTg/exec';
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbwMeKg3crVFMg_hrBeCpmALjUS3J2ZGEEJt4LVxW0f_vJfQNasZaAUWtCpQsgYd_2RxIg/exec';
 
   try {
     const { fn, args } = req.body;
