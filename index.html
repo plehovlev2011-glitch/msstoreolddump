@@ -2,39 +2,47 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>АИАС АВЕРС — Дневник ученика</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АИАС АВЕРС — Дневник</title>
     <style>
-        * { box-sizing: border-box; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; }
-        body { margin: 0; padding: 16px; background: #f5f5f7; color: #1c1c1e; }
+        * { box-sizing: border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { margin: 0; padding: 20px; background: #f2f2f7; color: #000; }
         .container { max-width: 600px; margin: 0 auto; }
-        .card { background: white; border-radius: 20px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .btn { background: #007aff; color: white; border: none; border-radius: 12px; padding: 12px 20px; font-size: 16px; font-weight: 500; width: 100%; cursor: pointer; margin-top: 8px; }
+        .card { background: white; border-radius: 24px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .btn { background: #007aff; color: white; border: none; border-radius: 14px; padding: 14px 20px; font-size: 17px; font-weight: 600; width: 100%; cursor: pointer; margin-top: 8px; }
         .btn-danger { background: #ff3b30; }
-        .input { width: 100%; padding: 12px; border: 1px solid #c6c6c8; border-radius: 12px; font-size: 16px; margin-bottom: 12px; }
-        .subject { margin-bottom: 20px; border-left: 4px solid; padding-left: 12px; }
-        .grade { display: inline-block; background: #e9ecef; padding: 4px 10px; border-radius: 20px; margin: 4px 4px 0 0; font-size: 14px; }
+        .input { width: 100%; padding: 14px; border: 1px solid #c6c6c8; border-radius: 14px; font-size: 17px; margin-bottom: 16px; background: #fff; }
+        .input:focus { outline: none; border-color: #007aff; }
+        .subject { margin-bottom: 24px; border-left: 4px solid; padding-left: 16px; }
+        .grade { display: inline-block; background: #e9ecef; padding: 6px 12px; border-radius: 20px; margin: 4px 6px 4px 0; font-size: 14px; }
         .schedule-item { padding: 12px 0; border-bottom: 1px solid #e9ecef; }
-        .time { font-weight: 600; color: #007aff; }
+        .schedule-item:last-child { border-bottom: none; }
+        .time { font-weight: 600; color: #007aff; font-size: 15px; }
+        .subject-name { font-size: 17px; font-weight: 600; margin: 8px 0 4px; }
         .tab-bar { display: flex; gap: 8px; margin-bottom: 20px; background: white; border-radius: 30px; padding: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .tab { flex: 1; text-align: center; padding: 10px; border-radius: 30px; cursor: pointer; background: transparent; border: none; font-weight: 500; }
+        .tab { flex: 1; text-align: center; padding: 12px; border-radius: 30px; cursor: pointer; background: transparent; border: none; font-weight: 500; font-size: 16px; transition: all 0.2s; }
         .tab.active { background: #007aff; color: white; }
         .hidden { display: none; }
         .loading { text-align: center; padding: 40px; color: #666; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .logout { background: none; border: none; color: #ff3b30; font-size: 14px; cursor: pointer; }
-        .greeting { font-size: 24px; font-weight: 600; margin: 0; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .logout { background: none; border: none; color: #ff3b30; font-size: 15px; cursor: pointer; font-weight: 500; }
+        .greeting { font-size: 28px; font-weight: 700; margin: 0; }
+        .error { color: #ff3b30; background: #ffe5e5; padding: 12px; border-radius: 14px; margin-top: 12px; }
+        .info-text { color: #666; text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
 <div class="container">
     <!-- ЭКРАН ВХОДА -->
     <div id="loginPanel" class="card">
-        <h2>Вход в дневник</h2>
+        <h2 style="margin-top: 0;">АИАС АВЕРС</h2>
+        <p style="color: #666; margin-bottom: 20px;">Электронный дневник</p>
         <input type="email" id="email" class="input" placeholder="Email" value="student1@school.ru">
         <input type="password" id="password" class="input" placeholder="Пароль" value="student123">
         <button class="btn" onclick="doLogin()">Войти</button>
-        <p style="font-size: 12px; color: #666; margin-top: 16px;">Тестовые: student1@school.ru / student123</p>
+        <p style="font-size: 13px; color: #666; margin-top: 16px; text-align: center;">
+            Тестовый вход: student1@school.ru / student123
+        </p>
     </div>
 
     <!-- ОСНОВНОЙ ИНТЕРФЕЙС -->
@@ -45,74 +53,99 @@
         </div>
 
         <div class="tab-bar">
-            <button class="tab active" data-tab="schedule" onclick="showTab('schedule')">Расписание</button>
-            <button class="tab" data-tab="grades" onclick="showTab('grades')">Оценки</button>
-            <button class="tab" data-tab="profile" onclick="showTab('profile')">Моё</button>
+            <button class="tab active" data-tab="schedule" onclick="showTab('schedule')">📚 Расписание</button>
+            <button class="tab" data-tab="grades" onclick="showTab('grades')">⭐ Оценки</button>
+            <button class="tab" data-tab="profile" onclick="showTab('profile')">👤 Моё</button>
         </div>
 
         <div id="schedulePanel" class="tab-panel">
-            <div class="card" id="scheduleContent">Загрузка...</div>
+            <div class="card" id="scheduleContent"><div class="loading">Загрузка...</div></div>
         </div>
         <div id="gradesPanel" class="tab-panel hidden">
-            <div class="card" id="gradesContent">Загрузка...</div>
+            <div class="card" id="gradesContent"><div class="loading">Загрузка...</div></div>
         </div>
         <div id="profilePanel" class="tab-panel hidden">
-            <div class="card" id="profileContent">Загрузка...</div>
+            <div class="card" id="profileContent"><div class="loading">Загрузка...</div></div>
         </div>
     </div>
 </div>
 
 <script>
     let authToken = null;
-    let userId = null;
-    let userRole = null;
+    let userName = null;
 
-    const API_URL = 'https://script.google.com/macros/s/AKfycbwhnX1yb5_oIMzEuSFaWtpGBbLj9ngOch9gbjqxbxKM-u7xCm7feWFeMLiowY40cZg23Q/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz19p55lJxwuDO0w0yvBJFQJQqwSdzZQrJFo3vvJzcjd-JPshmvYQfab7FJrHI1f_JDKg/exec';
 
     async function callAPI(fn, ...args) {
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
-                mode: 'no-cors', // для обхода CORS в браузере
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({ fn, args })
             });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            
             const text = await response.text();
-            // Из-за no-cors ответ пустой, используем альтернативный подход
-            console.log('Ответ:', text);
+            if (!text || text.trim() === '') {
+                throw new Error('Пустой ответ от сервера');
+            }
+            
             return JSON.parse(text);
         } catch (e) {
-            console.error(e);
-            return { success: false, error: e.message };
+            console.error('API Error:', e);
+            return { success: false, error: 'Ошибка соединения: ' + e.message };
         }
     }
 
     async function doLogin() {
-        const email = document.getElementById('email').value;
+        const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
-        if (!email || !password) return alert('Введите email и пароль');
-
-        const res = await callAPI('login', email, password);
-        if (res.success) {
-            authToken = res.token;
-            userId = res.userId;
-            userRole = res.role;
-            localStorage.setItem('token', authToken);
-            localStorage.setItem('userId', userId);
-            localStorage.setItem('role', userRole);
-            document.getElementById('loginPanel').classList.add('hidden');
-            document.getElementById('appPanel').classList.remove('hidden');
-            document.getElementById('greeting').innerText = `Привет, ${res.name.split(' ')[0]}`;
-            loadSchedule();
-            loadGrades();
-            loadProfile();
-        } else {
-            alert('Ошибка: ' + res.error);
+        
+        if (!email || !password) {
+            alert('Введите email и пароль');
+            return;
+        }
+        
+        const loginBtn = event.target;
+        loginBtn.disabled = true;
+        loginBtn.textContent = 'Вход...';
+        
+        try {
+            const res = await callAPI('login', email, password);
+            
+            if (res.success) {
+                authToken = res.token;
+                userName = res.name;
+                localStorage.setItem('diary_token', authToken);
+                localStorage.setItem('diary_name', userName);
+                document.getElementById('loginPanel').classList.add('hidden');
+                document.getElementById('appPanel').classList.remove('hidden');
+                document.getElementById('greeting').innerText = `Привет, ${userName.split(' ')[0] || 'ученик'}`;
+                
+                await Promise.all([
+                    loadSchedule(),
+                    loadGrades(),
+                    loadProfile()
+                ]);
+            } else {
+                alert('Ошибка входа: ' + (res.error || 'Неверный логин или пароль'));
+            }
+        } catch (err) {
+            alert('Ошибка: ' + err.message);
+        } finally {
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Войти';
         }
     }
 
     function doLogout() {
-        localStorage.clear();
+        localStorage.removeItem('diary_token');
+        localStorage.removeItem('diary_name');
         authToken = null;
         document.getElementById('loginPanel').classList.remove('hidden');
         document.getElementById('appPanel').classList.add('hidden');
@@ -120,57 +153,91 @@
 
     async function loadSchedule() {
         if (!authToken) return;
-        const res = await callAPI('getTodaySchedule', authToken);
         const container = document.getElementById('scheduleContent');
-        if (res.success && res.data.length) {
-            container.innerHTML = res.data.map(item => `
-                <div class="schedule-item">
-                    <div class="time">${item.startTime} — ${item.endTime} • ${item.lessonNumber} урок</div>
-                    <div><strong>${item.subjectName}</strong> (каб. ${item.room})</div>
-                    <div>Тема: ${item.topic || '—'}</div>
-                    <div>ДЗ: ${item.homework || '—'}</div>
-                    ${item.grade ? `<div>Оценка: ${item.grade}</div>` : ''}
-                </div>
-            `).join('');
-        } else {
-            container.innerHTML = '<p>Нет уроков на сегодня или выходной.</p>';
+        container.innerHTML = '<div class="loading">Загрузка...</div>';
+        
+        try {
+            const res = await callAPI('getTodaySchedule', authToken);
+            
+            if (res.success && res.data && res.data.length > 0) {
+                container.innerHTML = res.data.map(item => `
+                    <div class="schedule-item">
+                        <div class="time">⏰ ${item.startTime} — ${item.endTime} • ${item.lessonNumber} урок</div>
+                        <div class="subject-name">📖 ${item.subjectName} (каб. ${item.room})</div>
+                        <div>📝 Тема: ${item.topic || '—'}</div>
+                        <div>📚 ДЗ: ${item.homework || '—'}</div>
+                        ${item.grade ? `<div>🎯 Оценка за урок: <strong>${item.grade}</strong></div>` : ''}
+                        ${item.breakAfter ? `<div style="margin-top: 8px; color: #666; font-size: 13px;">🍫 ${item.breakAfter.name} (${item.breakAfter.duration} мин)</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<div class="info-text">📭 Нет уроков на сегодня или выходной день</div>';
+            }
+        } catch (err) {
+            container.innerHTML = `<div class="error">❌ Ошибка загрузки расписания</div>`;
         }
     }
 
     async function loadGrades() {
         if (!authToken) return;
-        const res = await callAPI('getMyGrades', authToken, 'all');
         const container = document.getElementById('gradesContent');
-        if (res.success && res.data.length) {
-            container.innerHTML = res.data.map(subj => `
-                <div class="subject" style="border-left-color: ${subj.subjectColor || '#ccc'}">
-                    <h3>${subj.subjectName}</h3>
-                    <div>Средний балл: ${subj.average || '—'} (оценок: ${subj.count})</div>
-                    <div>${subj.grades.map(g => `<span class="grade">${g.grade} • ${g.date}</span>`).join('')}</div>
-                </div>
-            `).join('');
-        } else {
-            container.innerHTML = '<p>Оценок пока нет.</p>';
+        container.innerHTML = '<div class="loading">Загрузка...</div>';
+        
+        try {
+            const res = await callAPI('getMyGrades', authToken, 'all');
+            
+            if (res.success && res.data && res.data.length > 0) {
+                container.innerHTML = res.data.map(subj => `
+                    <div class="subject" style="border-left-color: ${subj.subjectColor || '#007aff'}">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <strong style="font-size: 17px;">${subj.subjectName}</strong>
+                            <span style="background: #f2f2f7; padding: 4px 12px; border-radius: 20px; font-size: 14px;">
+                                📊 Средний: ${subj.average || '—'}
+                            </span>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            ${subj.grades.map(g => `<span class="grade">${g.grade} • ${g.date.slice(0,10)}</span>`).join('')}
+                        </div>
+                        <div style="margin-top: 8px; font-size: 13px; color: #666;">Всего оценок: ${subj.count}</div>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<div class="info-text">⭐ Оценок пока нет</div>';
+            }
+        } catch (err) {
+            container.innerHTML = `<div class="error">❌ Ошибка загрузки оценок</div>`;
         }
     }
 
     async function loadProfile() {
         if (!authToken) return;
-        const res = await callAPI('getMyProfile', authToken);
         const container = document.getElementById('profileContent');
-        if (res.success) {
-            const p = res.data;
-            container.innerHTML = `
-                <p><strong>Имя:</strong> ${p.name}</p>
-                <p><strong>Email:</strong> ${p.email}</p>
-                <p><strong>Класс:</strong> ${p.className || '—'}</p>
-                <p><strong>Телефон:</strong> ${p.phone || '—'}</p>
-                <p><strong>Родитель:</strong> ${p.parentName || '—'}</p>
-                <p><strong>Телефон родителя:</strong> ${p.parentPhone || '—'}</p>
-                <p><strong>Email родителя:</strong> ${p.parentEmail || '—'}</p>
-            `;
-        } else {
-            container.innerHTML = '<p>Ошибка загрузки профиля.</p>';
+        container.innerHTML = '<div class="loading">Загрузка...</div>';
+        
+        try {
+            const res = await callAPI('getMyProfile', authToken);
+            
+            if (res.success && res.data) {
+                const p = res.data;
+                container.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-size: 48px;">👩‍🎓</div>
+                        <h3 style="margin: 10px 0 5px;">${p.name}</h3>
+                        <p style="color: #666; margin: 0;">${p.role === 'student' ? 'Ученик' : 'Учитель'}</p>
+                    </div>
+                    <hr style="margin: 16px 0; border: none; border-top: 1px solid #e9ecef;">
+                    <p><strong>📧 Email:</strong> ${p.email || '—'}</p>
+                    <p><strong>🏫 Класс:</strong> ${p.className || '—'}</p>
+                    <p><strong>📞 Телефон:</strong> ${p.phone || '—'}</p>
+                    <p><strong>👪 Родитель:</strong> ${p.parentName || '—'}</p>
+                    <p><strong>📞 Телефон родителя:</strong> ${p.parentPhone || '—'}</p>
+                    <p><strong>📧 Email родителя:</strong> ${p.parentEmail || '—'}</p>
+                `;
+            } else {
+                container.innerHTML = '<div class="error">❌ Ошибка загрузки профиля</div>';
+            }
+        } catch (err) {
+            container.innerHTML = `<div class="error">❌ Ошибка загрузки профиля</div>`;
         }
     }
 
@@ -178,7 +245,7 @@
         document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
         document.getElementById(`${tab}Panel`).classList.remove('hidden');
         document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`.tab[data-tab="${tab}"]`).classList.add('active');
+        event.target.classList.add('active');
         
         if (tab === 'schedule') loadSchedule();
         if (tab === 'grades') loadGrades();
@@ -186,14 +253,13 @@
     }
 
     // Восстановление сессии
-    const savedToken = localStorage.getItem('token');
+    const savedToken = localStorage.getItem('diary_token');
     if (savedToken) {
         authToken = savedToken;
-        userId = localStorage.getItem('userId');
-        userRole = localStorage.getItem('role');
+        userName = localStorage.getItem('diary_name');
         document.getElementById('loginPanel').classList.add('hidden');
         document.getElementById('appPanel').classList.remove('hidden');
-        document.getElementById('greeting').innerText = `С возвращением!`;
+        document.getElementById('greeting').innerText = `С возвращением, ${userName?.split(' ')[0] || 'ученик'}!`;
         loadSchedule();
         loadGrades();
         loadProfile();
