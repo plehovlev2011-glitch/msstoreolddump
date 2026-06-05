@@ -83,11 +83,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ fn, args })
         });
-
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
         return await response.json();
-
     } catch (e) {
         console.error('API Error:', e);
         return { success: false, error: e.message };
