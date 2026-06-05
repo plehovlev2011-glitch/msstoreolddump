@@ -2,476 +2,202 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Магазин Windows Phone — Приложения и игры (США) 2013</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>АИАС АВЕРС — Дневник ученика</title>
+    <style>
+        * { box-sizing: border-box; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; }
+        body { margin: 0; padding: 16px; background: #f5f5f7; color: #1c1c1e; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .card { background: white; border-radius: 20px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .btn { background: #007aff; color: white; border: none; border-radius: 12px; padding: 12px 20px; font-size: 16px; font-weight: 500; width: 100%; cursor: pointer; margin-top: 8px; }
+        .btn-danger { background: #ff3b30; }
+        .input { width: 100%; padding: 12px; border: 1px solid #c6c6c8; border-radius: 12px; font-size: 16px; margin-bottom: 12px; }
+        .subject { margin-bottom: 20px; border-left: 4px solid; padding-left: 12px; }
+        .grade { display: inline-block; background: #e9ecef; padding: 4px 10px; border-radius: 20px; margin: 4px 4px 0 0; font-size: 14px; }
+        .schedule-item { padding: 12px 0; border-bottom: 1px solid #e9ecef; }
+        .time { font-weight: 600; color: #007aff; }
+        .tab-bar { display: flex; gap: 8px; margin-bottom: 20px; background: white; border-radius: 30px; padding: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .tab { flex: 1; text-align: center; padding: 10px; border-radius: 30px; cursor: pointer; background: transparent; border: none; font-weight: 500; }
+        .tab.active { background: #007aff; color: white; }
+        .hidden { display: none; }
+        .loading { text-align: center; padding: 40px; color: #666; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .logout { background: none; border: none; color: #ff3b30; font-size: 14px; cursor: pointer; }
+        .greeting { font-size: 24px; font-weight: 600; margin: 0; }
+    </style>
 </head>
-<body class="marketplace landingPage">
-    <div id="header" class="content">
-        <a href="#" id="wplogo"></a>
-        <ul class="mainNav hMenu">
-            <li><a href="#" class="design">возможности</a></li>
-            <li><a href="#" class="phones">телефоны</a></li>
-            <li><a href="#" class="marketplace">приложения+игры</a></li>
-            <li><a href="#" class="news">новости</a></li>
-            <li><a href="#" class="support">инструкции</a></li>
-        </ul>
-        <ul class="subNav hMenu">
-            <li><a href="#" id="store_overview" class="subNav">обзор</a></li>
-            <li><a href="#" id="store_landing" class="subNav">в центре внимания</a></li>
-            <li><a href="#" id="store_apps" class="subNav">приложения</a></li>
-            <li><a href="#" id="store_games" class="subNav">игры</a></li>
-            <li><a href="#" id="store_purchasehistory" class="subNav">история покупок</a></li>
-        </ul>
-        <div class="clear"></div>
-
-      <div onclick="location.href='/buyoperation/tg.html'" style="cursor: pointer; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; background: #f0f0f0;">
-        <span style="font-size: 5vw;">Перейти на /emo.html</span>
-              </div>
-    
-
-    <div id="main" class="content">
-        <div id="storeLanding">
-            <!-- БЛОК В ЦЕНТРЕ ВНИМАНИЯ -->
-            <div id="spotlight">
-                <!-- Ряд 0 -->
-                <div class="spotRow row0">
-                    <div class="appImage xxlarge tile00">
-                        <div class="appContainer xxlarge">
-                            <a href="#" class="appImage xxlarge"><img src="1.png" alt="название1"></a>
-                            <div class="appInfo xxlarge">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название1</div>
-                                    <div class="ratingLandingXXLarge fivePtZero"></div>
-                                    <span class="reviews">2505 отзывов</span>
-                                    <h2 class="appPrice">бесплатно</h2>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage xxlarge tile01">
-                        <div class="appContainer xxlarge">
-                            <a href="#" class="appImage xxlarge"><img src="2.png" alt="название2"></a>
-                            <div class="appInfo xxlarge">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название2</div>
-                                    <div class="ratingLandingXXLarge fourPtZero"></div>
-                                    <span class="reviews">100 отзывов</span>
-                                    <h2 class="appPrice">бесплатно</h2>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile02">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="3.png" alt="название3"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название3</div>
-                                    <div class="ratingLandingLarge fivePtZero"></div>
-                                    <div class="reviews smallText">466 отзывов</div>
-                                    <h4 class="appPrice">бесплатно</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile03">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="4.png" alt="название4"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название4</div>
-                                    <div class="ratingLandingLarge fourPtZero"></div>
-                                    <div class="reviews smallText">111 отзывов</div>
-                                    <h4 class="appPrice">1.29 $</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile04">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="5.png" alt="название5"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название5</div>
-                                    <div class="ratingLandingLarge fourPtFive"></div>
-                                    <div class="reviews smallText">67 отзывов</div>
-                                    <h4 class="appPrice">1.49 $</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile05">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="6.png" alt="название6"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название6</div>
-                                    <div class="ratingLandingLarge fourPtZero"></div>
-                                    <div class="reviews smallText">1095 отзывов</div>
-                                    <h4 class="appPrice">4.99 $</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ряд 1 -->
-                <div class="spotRow row1">
-                    <div class="appImage large tile10">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="7.png" alt="название7"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название7</div>
-                                    <div class="ratingLandingLarge threePtFive"></div>
-                                    <div class="reviews smallText">26 отзывов</div>
-                                    <h4 class="appPrice">0.99 $</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile11">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="8.png" alt="название8"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название8</div>
-                                    <div class="ratingLandingLarge fourPtFive"></div>
-                                    <div class="reviews smallText">162 отзыва</div>
-                                    <h4 class="appPrice">бесплатно</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile12">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="9.png" alt="название9"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название9</div>
-                                    <div class="ratingLandingLarge zeroPtZero"></div>
-                                    <div class="reviews smallText"></div>
-                                    <h4 class="appPrice">1.29 $</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile13">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="10.png" alt="название10"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название10</div>
-                                    <div class="ratingLandingLarge threePtFive"></div>
-                                    <div class="reviews smallText">27 отзывов</div>
-                                    <h4 class="appPrice">бесплатно</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="collectionTile">
-                        <div class="collectionContainer">
-                            <div class="tile">
-                                <a href="#"><img src="11.png" alt="коллекция1"></a>
-                                <h5><a href="#" class="collectionsText">коллекция1</a></h5>
-                            </div>
-                            <div class="collectionInfo">
-                                <a href="#"><div class="collectionInfoContainer">
-                                    <div class="collectionTitle">коллекция1</div>
-                                    <p class="collectionDescription">важные приложения</p>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ряд 2 -->
-                <div class="spotRow row2">
-                    <div class="appImage large tile20">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="12.png" alt="название12"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название12</div>
-                                    <div class="ratingLandingLarge fourPtFive"></div>
-                                    <div class="reviews smallText">42 отзыва</div>
-                                    <h4 class="appPrice">бесплатно</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="collectionTile">
-                        <div class="collectionContainer">
-                            <div class="tile">
-                                <a href="#"><img src="13.png" alt="коллекция2"></a>
-                                <h5><a href="#" class="collectionsText">коллекция2</a></h5>
-                            </div>
-                            <div class="collectionInfo">
-                                <a href="#"><div class="collectionInfoContainer">
-                                    <div class="collectionTitle">коллекция2</div>
-                                    <p class="collectionDescription">16 финалистов</p>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile22">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="14.png" alt="название14"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название14</div>
-                                    <div class="ratingLandingLarge fourPtZero"></div>
-                                    <div class="reviews smallText">790 отзывов</div>
-                                    <h4 class="appPrice">2.99 $</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile23">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="15.png" alt="название15"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название15</div>
-                                    <div class="ratingLandingLarge fourPtFive"></div>
-                                    <div class="reviews smallText">78 отзывов</div>
-                                    <h4 class="appPrice">бесплатно</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile24">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="16.png" alt="название16"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название16</div>
-                                    <div class="ratingLandingLarge fourPtZero"></div>
-                                    <div class="reviews smallText">31 отзыв</div>
-                                    <h4 class="appPrice">1.99 $</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ряд 3 -->
-                <div class="spotRow row3">
-                    <div class="appImage large tile30">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="17.png" alt="название17"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название17</div>
-                                    <div class="ratingLandingLarge fourPtFive"></div>
-                                    <div class="reviews smallText">527 отзывов</div>
-                                    <h4 class="appPrice">4.99 $</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile31">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="18.png" alt="название18"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название18</div>
-                                    <div class="ratingLandingLarge fourPtFive"></div>
-                                    <div class="reviews smallText">39 отзывов</div>
-                                    <h4 class="appPrice">бесплатно</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile32">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="19.png" alt="название19"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название19</div>
-                                    <div class="ratingLandingLarge fourPtZero"></div>
-                                    <div class="reviews smallText">49 отзывов</div>
-                                    <h4 class="appPrice">0.99 $</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile33">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="20.png" alt="название20"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название20</div>
-                                    <div class="ratingLandingLarge fourPtFive"></div>
-                                    <div class="reviews smallText">3030 отзывов</div>
-                                    <h4 class="appPrice">бесплатно</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile34">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="21.png" alt="название21"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название21</div>
-                                    <div class="ratingLandingLarge fourPtFive"></div>
-                                    <div class="reviews smallText">37 отзывов</div>
-                                    <h4 class="appPrice">бесплатно</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="appImage large tile35">
-                        <div class="appContainer large">
-                            <a href="#" class="appImage large"><img src="22.png" alt="название22"></a>
-                            <div class="appInfo large">
-                                <a href="#"><div class="appInfoContainer">
-                                    <div class="appTitle">название22</div>
-                                    <div class="ratingLandingLarge fivePtZero"></div>
-                                    <div class="reviews smallText">131 отзыв</div>
-                                    <h4 class="appPrice">бесплатно</h4>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ТОП БЕСПЛАТНЫХ -->
-            <div class="list">
-                <div class="listHeader">
-                    <h6 class="title1">топ бесплатных</h6>
-                    <div class="links">
-                        <a href="#">все топ бесплатных приложений</a>
-                        <span class="separator">|</span>
-                        <a href="#">все топ бесплатных игр</a>
-                    </div>
-                </div>
-                <table class="appList"><tbody><tr>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="23.png"></a><a href="#" class="title title5">название23</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="24.png"></a><a href="#" class="title title5">название24</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="25.png"></a><a href="#" class="title title5">название25</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="26.png"></a><a href="#" class="title title5">название26</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="27.png"></a><a href="#" class="title title5">название27</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="28.png"></a><a href="#" class="title title5">название28</a><div class="cost">бесплатно</div></td>
-                </tr></tbody></table>
-            </div>
-
-            <!-- НОВЫЕ И ПОПУЛЯРНЫЕ -->
-            <div class="list">
-                <div class="listHeader">
-                    <h6 class="title1">новые+популярные</h6>
-                    <div class="links">
-                        <a href="#">все новые+популярные приложения</a>
-                        <span class="separator">|</span>
-                        <a href="#">все новые+популярные игры</a>
-                    </div>
-                </div>
-                <table class="appList"><tbody><tr>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="29.png"></a><a href="#" class="title title5">название29</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="30.png"></a><a href="#" class="title title5">название30</a><div class="cost">6.99 $</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="31.png"></a><a href="#" class="title title5">название31</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="32.png"></a><a href="#" class="title title5">название32</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="33.png"></a><a href="#" class="title title5">название33</a><div class="cost">4.99 $</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="34.png"></a><a href="#" class="title title5">название34</a><div class="cost">бесплатно</div></td>
-                </tr></tbody></table>
-            </div>
-
-            <!-- ТОП ПЛАТНЫХ -->
-            <div class="list">
-                <div class="listHeader">
-                    <h6 class="title1">топ платных</h6>
-                    <div class="links">
-                        <a href="#">все топ платных приложений</a>
-                        <span class="separator">|</span>
-                        <a href="#">все топ платных игр</a>
-                    </div>
-                </div>
-                <table class="appList"><tbody><tr>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="35.png"></a><a href="#" class="title title5">название35</a><div class="cost">4.99 $</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="36.png"></a><a href="#" class="title title5">название36</a><div class="cost">0.99 $</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="37.png"></a><a href="#" class="title title5">название37</a><div class="cost">0.99 $</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="38.png"></a><a href="#" class="title title5">название38</a><div class="cost">1.99 $</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="39.png"></a><a href="#" class="title title5">название39</a><div class="cost">1.99 $</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="40.png"></a><a href="#" class="title title5">название40</a><div class="cost">2.99 $</div></td>
-                </tr></tbody></table>
-            </div>
-
-            <!-- ЛУЧШИЕ ПО ОЦЕНКАМ -->
-            <div class="list">
-                <div class="listHeader">
-                    <h6 class="title1">лучшие по оценкам</h6>
-                    <div class="links">
-                        <a href="#">все лучшие приложения</a>
-                        <span class="separator">|</span>
-                        <a href="#">все лучшие игры</a>
-                    </div>
-                </div>
-                <table class="appList"><tbody><tr>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="41.png"></a><a href="#" class="title title5">название41</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="42.png"></a><a href="#" class="title title5">название42</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="43.png"></a><a href="#" class="title title5">название43</a><div class="cost">0.99 $</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="44.png"></a><a href="#" class="title title5">название44</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="45.png"></a><a href="#" class="title title5">название45</a><div class="cost">бесплатно</div></td>
-                    <td class="medium"><a href="#" class="appImage medium"><img src="46.png"></a><a href="#" class="title title5">название46</a><div class="cost">бесплатно</div></td>
-                </table></tbody></table>
-            </div>
-
-            <!-- КОЛЛЕКЦИИ -->
-            <div class="list">
-                <div class="listHeader">
-                    <h6 class="title1">коллекции</h6>
-                    <div class="links"><a href="#">все коллекции</a></div>
-                </div>
-                <table class="collectionList"><tbody><tr>
-                    <td><div class="collectionTile"><div class="collectionContainer"><div class="tile"><a href="#"><img src="47.png"></a><h5><a href="#" class="collectionsText">коллекция1</a></h5></div><h5><a href="#" class="title title5">коллекция1</a></h5></div></div></td>
-                    <td><div class="collectionTile"><div class="collectionContainer"><div class="tile"><a href="#"><img src="48.png"></a><h5><a href="#" class="collectionsText">коллекция2</a></h5></div><h5><a href="#" class="title title5">коллекция2</a></h5></div></div></td>
-                    <td><div class="collectionTile"><div class="collectionContainer"><div class="tile"><a href="#"><img src="49.png"></a><h5><a href="#" class="collectionsText">коллекция3</a></h5></div><h5><a href="#" class="title title5">коллекция3</a></h5></div></div></td>
-                </tr></tbody></table>
-            </div>
-        </div>
+<body>
+<div class="container">
+    <!-- ЭКРАН ВХОДА -->
+    <div id="loginPanel" class="card">
+        <h2>Вход в дневник</h2>
+        <input type="email" id="email" class="input" placeholder="Email" value="student1@school.ru">
+        <input type="password" id="password" class="input" placeholder="Пароль" value="student123">
+        <button class="btn" onclick="doLogin()">Войти</button>
+        <p style="font-size: 12px; color: #666; margin-top: 16px;">Тестовые: student1@school.ru / student123</p>
     </div>
 
-    <!-- ПРОМО-БЛОКИ -->
-    <div id="promoModules"><ul>
-        <li><div class="promoImg"><a href="#"><img src="promo1.jpg"></a></div><h5><a class="title5" href="#">телефон года</a></h5><p>nokia lumia 920 — телефон года!</p><a class="inline" href="#">узнать</a></li>
-        <li><div class="promoImg"><a href="#"><img src="promo2.gif"></a></div><h5><a class="title5" href="#">pandora</a></h5><p>бесплатная музыка, без рекламы</p><a class="inline" href="#">скачать</a></li>
-        <li><div class="promoImg"><a href="#"><img src="promo3.png"></a></div><h5><a class="title5" href="#">попробуйте windows phone</a></h5><p>пройдите экскурсию</p><a class="inline" href="#">попробовать</a></li>
-        <li><div class="promoImg"><a href="#"><img src="promo4.png"></a></div><h5><a class="title5" href="#">сравните</a></h5><p>windows phone против android и iphone</p><a class="inline" href="#">смотреть видео</a></li>
-    </ul></div>
-
-    <!-- ПОДВАЛ -->
-    <div id="footer">
-        <div id="disclaimer" class="smallText content clear">
-            <div>платежи могут облагаться комиссией</div>
+    <!-- ОСНОВНОЙ ИНТЕРФЕЙС -->
+    <div id="appPanel" class="hidden">
+        <div class="header">
+            <h1 class="greeting" id="greeting"></h1>
+            <button class="logout" onclick="doLogout()">Выйти</button>
         </div>
-        <div class="navContainer clear"><div class="content">
-            <ul id="footerNav" class="footer hMenu">
-                <li><a href="#" class="footer1">разработчикам</a></li><li><span class="separator">|</span></li>
-                <li><a href="#" class="footer1">бизнесу</a></li><li><span class="separator">|</span></li>
-                <li><a href="#" class="footer1">новости</a></li><li><span class="separator">|</span></li>
-                <li><a href="#" class="footer1">вакансии</a></li><li><span class="separator">|</span></li>
-                <li><a href="#" class="footer1">карта сайта</a></li><li><span class="separator">|</span></li>
-                <li><a href="#" class="footer1">контакты</a></li><li><span class="separator">|</span></li>
-                <li><a href="#" class="footer1">обратная связь</a></li>
-            </ul>
-            <div class="hr"></div>
-            <ul id="footerSubNav" class="footer hMenu">
-                <li><a href="#" class="footer2">конфиденциальность</a></li><li><span class="separator">|</span></li>
-                <li><a href="#" class="footer2">условия использования</a></li><li><span class="separator">|</span></li>
-                <li><a href="#" class="footer2">товарные знаки</a></li><li><span class="separator">|</span></li>
-                <li><a href="#" class="footer2">сша (русский)</a></li>
-            </ul>
-            <div id="copyright" class="footer smallText">
-                <a href="#" id="mslogo" target="_blank"><img src="ms_logo.png" alt="microsoft"></a>
-                <span>© 2013 microsoft</span>
-            </div>
-            <div class="clear"></div>
-        </div></div>
-    </div>
 
-    <script src="script.js"></script>
+        <div class="tab-bar">
+            <button class="tab active" data-tab="schedule" onclick="showTab('schedule')">Расписание</button>
+            <button class="tab" data-tab="grades" onclick="showTab('grades')">Оценки</button>
+            <button class="tab" data-tab="profile" onclick="showTab('profile')">Моё</button>
+        </div>
+
+        <div id="schedulePanel" class="tab-panel">
+            <div class="card" id="scheduleContent">Загрузка...</div>
+        </div>
+        <div id="gradesPanel" class="tab-panel hidden">
+            <div class="card" id="gradesContent">Загрузка...</div>
+        </div>
+        <div id="profilePanel" class="tab-panel hidden">
+            <div class="card" id="profileContent">Загрузка...</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let authToken = null;
+    let userId = null;
+    let userRole = null;
+
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwhnX1yb5_oIMzEuSFaWtpGBbLj9ngOch9gbjqxbxKM-u7xCm7feWFeMLiowY40cZg23Q/exec';
+
+    async function callAPI(fn, ...args) {
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors', // для обхода CORS в браузере
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ fn, args })
+            });
+            const text = await response.text();
+            // Из-за no-cors ответ пустой, используем альтернативный подход
+            console.log('Ответ:', text);
+            return JSON.parse(text);
+        } catch (e) {
+            console.error(e);
+            return { success: false, error: e.message };
+        }
+    }
+
+    async function doLogin() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        if (!email || !password) return alert('Введите email и пароль');
+
+        const res = await callAPI('login', email, password);
+        if (res.success) {
+            authToken = res.token;
+            userId = res.userId;
+            userRole = res.role;
+            localStorage.setItem('token', authToken);
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('role', userRole);
+            document.getElementById('loginPanel').classList.add('hidden');
+            document.getElementById('appPanel').classList.remove('hidden');
+            document.getElementById('greeting').innerText = `Привет, ${res.name.split(' ')[0]}`;
+            loadSchedule();
+            loadGrades();
+            loadProfile();
+        } else {
+            alert('Ошибка: ' + res.error);
+        }
+    }
+
+    function doLogout() {
+        localStorage.clear();
+        authToken = null;
+        document.getElementById('loginPanel').classList.remove('hidden');
+        document.getElementById('appPanel').classList.add('hidden');
+    }
+
+    async function loadSchedule() {
+        if (!authToken) return;
+        const res = await callAPI('getTodaySchedule', authToken);
+        const container = document.getElementById('scheduleContent');
+        if (res.success && res.data.length) {
+            container.innerHTML = res.data.map(item => `
+                <div class="schedule-item">
+                    <div class="time">${item.startTime} — ${item.endTime} • ${item.lessonNumber} урок</div>
+                    <div><strong>${item.subjectName}</strong> (каб. ${item.room})</div>
+                    <div>Тема: ${item.topic || '—'}</div>
+                    <div>ДЗ: ${item.homework || '—'}</div>
+                    ${item.grade ? `<div>Оценка: ${item.grade}</div>` : ''}
+                </div>
+            `).join('');
+        } else {
+            container.innerHTML = '<p>Нет уроков на сегодня или выходной.</p>';
+        }
+    }
+
+    async function loadGrades() {
+        if (!authToken) return;
+        const res = await callAPI('getMyGrades', authToken, 'all');
+        const container = document.getElementById('gradesContent');
+        if (res.success && res.data.length) {
+            container.innerHTML = res.data.map(subj => `
+                <div class="subject" style="border-left-color: ${subj.subjectColor || '#ccc'}">
+                    <h3>${subj.subjectName}</h3>
+                    <div>Средний балл: ${subj.average || '—'} (оценок: ${subj.count})</div>
+                    <div>${subj.grades.map(g => `<span class="grade">${g.grade} • ${g.date}</span>`).join('')}</div>
+                </div>
+            `).join('');
+        } else {
+            container.innerHTML = '<p>Оценок пока нет.</p>';
+        }
+    }
+
+    async function loadProfile() {
+        if (!authToken) return;
+        const res = await callAPI('getMyProfile', authToken);
+        const container = document.getElementById('profileContent');
+        if (res.success) {
+            const p = res.data;
+            container.innerHTML = `
+                <p><strong>Имя:</strong> ${p.name}</p>
+                <p><strong>Email:</strong> ${p.email}</p>
+                <p><strong>Класс:</strong> ${p.className || '—'}</p>
+                <p><strong>Телефон:</strong> ${p.phone || '—'}</p>
+                <p><strong>Родитель:</strong> ${p.parentName || '—'}</p>
+                <p><strong>Телефон родителя:</strong> ${p.parentPhone || '—'}</p>
+                <p><strong>Email родителя:</strong> ${p.parentEmail || '—'}</p>
+            `;
+        } else {
+            container.innerHTML = '<p>Ошибка загрузки профиля.</p>';
+        }
+    }
+
+    function showTab(tab) {
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
+        document.getElementById(`${tab}Panel`).classList.remove('hidden');
+        document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.tab[data-tab="${tab}"]`).classList.add('active');
+        
+        if (tab === 'schedule') loadSchedule();
+        if (tab === 'grades') loadGrades();
+        if (tab === 'profile') loadProfile();
+    }
+
+    // Восстановление сессии
+    const savedToken = localStorage.getItem('token');
+    if (savedToken) {
+        authToken = savedToken;
+        userId = localStorage.getItem('userId');
+        userRole = localStorage.getItem('role');
+        document.getElementById('loginPanel').classList.add('hidden');
+        document.getElementById('appPanel').classList.remove('hidden');
+        document.getElementById('greeting').innerText = `С возвращением!`;
+        loadSchedule();
+        loadGrades();
+        loadProfile();
+    }
+</script>
 </body>
 </html>
