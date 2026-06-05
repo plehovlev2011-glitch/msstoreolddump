@@ -10,10 +10,10 @@ export default async function handler(req, res) {
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed!' });
   }
 
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbxZnYwPJtRrspJc6rHXqfqVivzdMbouAsEIZUqFiunSkkUGP1JTOobqwYFm0ZaSYya19Q/exec';
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbxw2LHo2DxJUbzfKd8Q6r2B0omrgbAiCeno_DA5X-w5cd5QvaX9U0EZH03bv9Akn3V__g/exec';
 
   try {
     const { fn, args } = req.body;
