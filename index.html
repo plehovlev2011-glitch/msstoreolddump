@@ -41,7 +41,7 @@
         <input type="password" id="password" class="input" placeholder="Пароль" value="student123">
         <button class="btn" onclick="doLogin()">Войти</button>
         <p style="font-size: 13px; color: #666; margin-top: 16px; text-align: center;">
-            Тестовый вход: student1@school.ru / student123
+            Тестовый ссссвход: student1@school.ru / student123
         </p>
     </div>
 
@@ -77,30 +77,31 @@
     const API_URL = 'https://script.google.com/macros/s/AKfycbz19p55lJxwuDO0w0yvBJFQJQqwSdzZQrJFo3vvJzcjd-JPshmvYQfab7FJrHI1f_JDKg/exec';
 
     async function callAPI(fn, ...args) {
-        try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ fn, args })
-            });
-            
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-            
-            const text = await response.text();
-            if (!text || text.trim() === '') {
-                throw new Error('Пустой ответ от сервера');
-            }
-            
-            return JSON.parse(text);
-        } catch (e) {
-            console.error('API Error:', e);
-            return { success: false, error: 'Ошибка соединения: ' + e.message };
+    try {
+        // URLSearchParams — "простой" запрос, браузер не делает preflight OPTIONS
+        const params = new URLSearchParams();
+        params.append('fn', fn);
+        params.append('args', JSON.stringify(args));
+
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            // НЕ указываем Content-Type явно — браузер сам поставит
+            // application/x-www-form-urlencoded, что и нужно
+            body: params
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
         }
+
+        const text = await response.text();
+        return JSON.parse(text);
+
+    } catch (e) {
+        console.error('API Error:', e);
+        return { success: false, error: e.message };
     }
+}
 
     async function doLogin() {
         const email = document.getElementById('email').value.trim();
