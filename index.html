@@ -78,24 +78,15 @@
 
     async function callAPI(fn, ...args) {
     try {
-        // URLSearchParams — "простой" запрос, браузер не делает preflight OPTIONS
-        const params = new URLSearchParams();
-        params.append('fn', fn);
-        params.append('args', JSON.stringify(args));
-
         const response = await fetch(API_URL, {
             method: 'POST',
-            // НЕ указываем Content-Type явно — браузер сам поставит
-            // application/x-www-form-urlencoded, что и нужно
-            body: params
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fn, args })
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-        const text = await response.text();
-        return JSON.parse(text);
+        return await response.json();
 
     } catch (e) {
         console.error('API Error:', e);
